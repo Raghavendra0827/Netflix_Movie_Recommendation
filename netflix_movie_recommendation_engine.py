@@ -31,7 +31,7 @@ def Recommend(User_ID, Movies):
     st.pyplot()
 
 if __name__ == "__main__":
-    user_id_input = st.number_input("Enter User ID:", value=822109)
+    user_id_input = st.number_input("Enter User ID:", value=1559445)
     user_id = int(user_id_input)
     Recommend(user_id, Movies)
 
