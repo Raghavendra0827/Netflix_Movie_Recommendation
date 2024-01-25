@@ -30,10 +30,11 @@ def Recommend(User_ID, Movies):
 
 if __name__ == "__main__":
     user_id_input = st.number_input("Enter User ID:", 822109)
+    user_id = int(user_id_input)
+    Recommend(user_id, Movies)
 
-    if user_id_input and user_id_input.isdigit():
-        user_id = int(user_id_input)
-        Recommend(user_id, Movies)
+    # if user_id_input and user_id_input.isdigit():
+
         
         # Check if the entered User ID is in the list of Movie_Id
         # if user_id in list(Movies['Movie_Id']):
