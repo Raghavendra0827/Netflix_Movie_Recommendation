@@ -11,8 +11,29 @@ Movies.drop(columns=["Unnamed: 0"], inplace=True)
 with open('svd_model.pkl', 'rb') as file:
     loaded_svd_model = pickle.load(file)
 
+background_image = 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bmV0ZmxpeHxlbnwwfHwwfHx8MA%3D%3D'
+html_code = f"""
+    <style>
+        body {{
+            background-image: url('{background_image}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;  /* Set the height of the background to fill the viewport */
+            margin: 0;  /* Remove default body margin */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }}
+        .stApp {{
+            background: none;  /* Remove Streamlit app background */
+        }}
+    </style>
+"""
+
 def main():
-    st.title("Movie Recommendation App")
+    st.title("Netflix Movie Recommendation Engine")
     # User input for User ID
     user_id_input = st.number_input("Enter User ID:", value=2378011)
     user_id = int(user_id_input)
