@@ -5,7 +5,7 @@ import seaborn as sns
 import pickle
 import matplotlib.pyplot as plt
 
-Movies = pd.read_csv('/content/Movies.csv')
+Movies = pd.read_csv('Movies.csv')
 Movies.drop(columns = ["Unnamed: 0"], inplace = True)
 
 with open('svd_model.pkl', 'rb') as file:
