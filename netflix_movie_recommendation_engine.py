@@ -26,12 +26,15 @@ def Recommend(User_ID, Movies):
     plt.figure(figsize=(10, 6))
     heatmap_data = Movies.pivot_table(index='User_ID', columns='Movie_Id', values='Estimate_Score')
     sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
+    
+    # Display the heatmap using Streamlit's st.pyplot()
     st.pyplot()
 
 if __name__ == "__main__":
-    user_id_input = st.number_input("Enter User ID:", 822109)
+    user_id_input = st.number_input("Enter User ID:", value=822109)
     user_id = int(user_id_input)
     Recommend(user_id, Movies)
+
 
     # if user_id_input and user_id_input.isdigit():
 
