@@ -11,13 +11,14 @@ Movies.drop(columns=["Unnamed: 0"], inplace=True)
 with open('svd_model.pkl', 'rb') as file:
     loaded_svd_model = pickle.load(file)
 
-st.title("Movie Recommendation App")
-# User input for User ID
-user_id_input = st.number_input("Enter User ID:")
-user_id = int(user_id_input)
-# Button to execute the recommendation function
-if st.button("Recommend Movies"):
-    Recommend(user_id, Movies)
+def main():
+    st.title("Movie Recommendation App")
+    # User input for User ID
+    user_id_input = st.number_input("Enter User ID:")
+    user_id = int(user_id_input)
+    # Button to execute the recommendation function
+    if st.button("Recommend Movies"):
+        Recommend(user_id, Movies)
 
 
 def Recommend(User_ID, Movies):
@@ -40,6 +41,7 @@ def Recommend(User_ID, Movies):
     st.pyplot()
 
 if __name__ == "__main__":
+    main()
 
 
     # if user_id_input and user_id_input.isdigit():
