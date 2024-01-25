@@ -14,7 +14,7 @@ with open('svd_model.pkl', 'rb') as file:
 def Recommend(User_ID, Movies):
     try:
         Movies['Estimate_Score'] = Movies['Movie_Id'].apply(lambda x: loaded_svd_model.predict(User_ID, x).est)
-        Movies = Movies.sort_values('Estimate_Score', ascending=False)
+        Movie = Movies.sort_values('Estimate_Score', ascending=False)
     except:
         st.warning("Invalid User ID")
 
@@ -24,7 +24,7 @@ def Recommend(User_ID, Movies):
 
     # Create a heatmap of estimated scores
     plt.figure(figsize=(10, 6))
-    heatmap_data = Movies.pivot_table(index='User_ID', columns='Movie_Id', values='Estimate_Score')
+    heatmap_data = pd.DataFrame([Movies['Name'][:10],[10,9,8,7,6,5,4,3,2,1,]], columns= ["Names","Priority"])
     sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
     
     # Display the heatmap using Streamlit's st.pyplot()
