@@ -34,11 +34,17 @@ def Recommend(User_ID, Movies):
 
     # Create a heatmap of estimated scores
     plt.figure(figsize=(10, 6))
+    
+    # Ensure the "Priority" column is numeric and has no missing values
     heatmap_data = pd.DataFrame({'Names': Movie['Name'][:10], 'Priority': [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]})
-    sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
+    heatmap_data['Priority'] = pd.to_numeric(heatmap_data['Priority'], errors='coerce').fillna(0)
+    sns.heatmap(heatmap_data[['Priority']], annot=True, fmt="g", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
     
     # Display the heatmap using Streamlit's st.pyplot()
     st.pyplot()
+    
+    # Display the heatmap using Streamlit's st.pyplot()
+    # st.pyplot()
 
 if __name__ == "__main__":
     main()
