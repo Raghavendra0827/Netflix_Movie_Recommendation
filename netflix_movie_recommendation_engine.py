@@ -14,7 +14,7 @@ with open('svd_model.pkl', 'rb') as file:
 def main():
     st.title("Movie Recommendation App")
     # User input for User ID
-    user_id_input = st.number_input("Enter User ID:")
+    user_id_input = st.number_input("Enter User ID:", value = 2378011)
     user_id = int(user_id_input)
     # Button to execute the recommendation function
     if st.button("Recommend Movies"):
@@ -29,7 +29,7 @@ def Recommend(User_ID, Movies):
         st.warning("Invalid User ID")
 
     st.header("Top 10 Recommended Movies:")
-    for idx, movie_name in enumerate(Movies['Name'][:10]):
+    for idx, movie_name in enumerate(Movie['Name'][:10]):
         st.write(f"{idx + 1}. {movie_name}")
 
     # Create a heatmap of estimated scores
