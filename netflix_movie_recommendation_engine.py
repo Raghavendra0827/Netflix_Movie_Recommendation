@@ -15,18 +15,18 @@ def Recommend(User_ID, Movies):
     try:
         Movies['Estimate_Score'] = Movies['Movie_Id'].apply(lambda x: loaded_svd_model.predict(User_ID, x).est)
         Movies = Movies.sort_values('Estimate_Score', ascending=False)
-
-        st.header("Top 10 Recommended Movies:")
-        for idx, movie_name in enumerate(Movies['Name'][:10]):
-            st.write(f"{idx + 1}. {movie_name}")
-
-        # Create a heatmap of estimated scores
-        plt.figure(figsize=(10, 6))
-        heatmap_data = Movies.pivot_table(index='User_ID', columns='Movie_Id', values='Estimate_Score')
-        sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
-        st.pyplot()
     except:
         st.warning("Invalid User ID")
+
+    st.header("Top 10 Recommended Movies:")
+    for idx, movie_name in enumerate(Movies['Name'][:10]):
+        st.write(f"{idx + 1}. {movie_name}")
+
+    # Create a heatmap of estimated scores
+    plt.figure(figsize=(10, 6))
+    heatmap_data = Movies.pivot_table(index='User_ID', columns='Movie_Id', values='Estimate_Score')
+    sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
+    st.pyplot()
 
 if __name__ == "__main__":
     user_id_input = st.text_input("Enter User ID:")
