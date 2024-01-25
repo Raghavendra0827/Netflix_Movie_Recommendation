@@ -34,7 +34,7 @@ def Recommend(User_ID, Movies):
 
     # Create a heatmap of estimated scores
     plt.figure(figsize=(10, 6))
-    heatmap_data = pd.DataFrame([Movies['Name'][:10],[10,9,8,7,6,5,4,3,2,1,]], columns= ["Names","Priority"])
+    heatmap_data = pd.DataFrame({'Names': Movie['Name'][:10], 'Priority': [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]})
     sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
     
     # Display the heatmap using Streamlit's st.pyplot()
