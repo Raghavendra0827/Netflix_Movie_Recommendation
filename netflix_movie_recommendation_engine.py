@@ -65,4 +65,5 @@ def Recommend(User_ID, Movies):
     st.pyplot(fig)
 
 if __name__ == "__main__":
+    st.markdown(html_code, unsafe_allow_html=True)
     main()
