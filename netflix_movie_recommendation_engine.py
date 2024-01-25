@@ -14,12 +14,11 @@ with open('svd_model.pkl', 'rb') as file:
 def main():
     st.title("Movie Recommendation App")
     # User input for User ID
-    user_id_input = st.number_input("Enter User ID:", value = 2378011)
+    user_id_input = st.number_input("Enter User ID:", value=2378011)
     user_id = int(user_id_input)
     # Button to execute the recommendation function
     if st.button("Recommend Movies"):
         Recommend(user_id, Movies)
-
 
 def Recommend(User_ID, Movies):
     try:
@@ -33,30 +32,16 @@ def Recommend(User_ID, Movies):
         st.write(f"{idx + 1}. {movie_name}")
 
     # Create a heatmap of estimated scores
-    plt.figure(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10, 6))
     
     # Ensure the "Priority" column is numeric and has no missing values
     heatmap_data = pd.DataFrame({'Names': Movie['Name'][:10], 'Priority': [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]})
     heatmap_data['Priority'] = pd.to_numeric(heatmap_data['Priority'], errors='coerce').fillna(0)
-    sns.heatmap(heatmap_data[['Priority']], annot=True, fmt="g", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'})
+    
+    sns.heatmap(heatmap_data[['Priority']], annot=True, fmt="g", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'}, ax=ax)
     
     # Display the heatmap using Streamlit's st.pyplot()
-    st.pyplot()
-    
-    # Display the heatmap using Streamlit's st.pyplot()
-    # st.pyplot()
+    st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
-
-
-    # if user_id_input and user_id_input.isdigit():
-
-        
-        # Check if the entered User ID is in the list of Movie_Id
-        # if user_id in list(Movies['Movie_Id']):
-            # Recommend(user_id, Movies)
-    #     else:
-    #         st.warning("User ID not found in the dataset.")
-    # else:
-    #     st.warning("Please enter a valid User ID.")
