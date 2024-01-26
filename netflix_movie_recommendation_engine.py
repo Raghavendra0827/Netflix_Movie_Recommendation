@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 Movies = pd.read_csv('Movies.csv')
 Movies.drop(columns=["Unnamed: 0"], inplace=True)
+Ratingss = pd.read_csv('Ratings.csv')[1:]
 
 with open('svd_model.pkl', 'rb') as file:
     loaded_svd_model = pickle.load(file)
@@ -34,14 +35,28 @@ html_code = f"""
 
 def main():
     st.title("Netflix Movie Recommendation Engine")
+    
+    app_mode = st.sidebar.selectbox("Choose the App Mode", ["Recommend Movies", "View CSV"])
+    
+    if app_mode == "Recommend Movies":
+        recommend_movies_tab()
+    elif app_mode == "View CSV":
+        view_csv_tab()
+
+def recommend_movies_tab():
+    st.sidebar.write("## Recommendation Settings")
     # User input for User ID
-    user_id_input = st.number_input("Enter User ID:", value=2378011)
+    user_id_input = st.sidebar.number_input("Enter User ID:", value=2378011)
     user_id = int(user_id_input)
     # Button to execute the recommendation function
-    if st.button("Recommend Movies"):
-        Recommend(user_id, Movies)
+    if st.sidebar.button("Recommend Movies"):
+        recommend_movies(user_id)
 
-def Recommend(User_ID, Movies):
+def view_csv_tab():
+    st.title("View CSV in Table Format")
+    st.write(Movies)
+
+def recommend_movies(User_ID):
     try:
         Movies['Estimate_Score'] = Movies['Movie_Id'].apply(lambda x: loaded_svd_model.predict(User_ID, x).est)
         Movie = Movies.sort_values('Estimate_Score', ascending=False)
