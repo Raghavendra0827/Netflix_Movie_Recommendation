@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 
 Movies = pd.read_csv('Movies.csv')
 Movies.drop(columns=["Unnamed: 0"], inplace=True)
-Ratingss = pd.read_csv('Ratings.csv')[1:]
 
 with open('svd_model.pkl', 'rb') as file:
     loaded_svd_model = pickle.load(file)
@@ -20,43 +19,27 @@ html_code = f"""
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            height: 100vh;  /* Set the height of the background to fill the viewport */
-            margin: 0;  /* Remove default body margin */
+            height: 100vh;
+            margin: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }}
         .stApp {{
-            background: none;  /* Remove Streamlit app background */
+            background: none;
         }}
     </style>
 """
 
 def main():
     st.title("Netflix Movie Recommendation Engine")
-    
-    app_mode = st.sidebar.selectbox("Choose the App Mode", ["Recommend Movies", "View CSV"])
-    
-    if app_mode == "Recommend Movies":
-        recommend_movies_tab()
-    elif app_mode == "View CSV":
-        view_csv_tab()
-
-def recommend_movies_tab():
-    st.sidebar.write("## Recommendation Settings")
-    # User input for User ID
-    user_id_input = st.sidebar.number_input("Enter User ID:", value=2378011)
+    user_id_input = st.number_input("Enter User ID:", value=2378011)
     user_id = int(user_id_input)
-    # Button to execute the recommendation function
-    if st.sidebar.button("Recommend Movies"):
-        recommend_movies(user_id)
+    if st.button("Recommend Movies"):
+        Recommend(user_id, Movies)
 
-def view_csv_tab():
-    st.title("View CSV in Table Format")
-    st.write(Movies)
-
-def recommend_movies(User_ID):
+def Recommend(User_ID, Movies):
     try:
         Movies['Estimate_Score'] = Movies['Movie_Id'].apply(lambda x: loaded_svd_model.predict(User_ID, x).est)
         Movie = Movies.sort_values('Estimate_Score', ascending=False)
@@ -67,16 +50,11 @@ def recommend_movies(User_ID):
     for idx, movie_name in enumerate(Movie['Name'][:10]):
         st.write(f"{idx + 1}. {movie_name}")
 
-    # Create a heatmap of estimated scores
     fig, ax = plt.subplots(figsize=(10, 6))
-    
-    # Ensure the "Priority" column is numeric and has no missing values
     heatmap_data = pd.DataFrame({'Names': Movie['Name'][:10], 'Priority': [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]})
     heatmap_data['Priority'] = pd.to_numeric(heatmap_data['Priority'], errors='coerce').fillna(0)
     heatmap_data.set_index('Names', inplace=True)
     sns.heatmap(heatmap_data[['Priority']], annot=True, fmt="g", cmap="YlGnBu", cbar_kws={'label': 'Estimate Score'}, ax=ax)
-    
-    # Display the heatmap using Streamlit's st.pyplot()
     st.pyplot(fig)
 
 if __name__ == "__main__":
