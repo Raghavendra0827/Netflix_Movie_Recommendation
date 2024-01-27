@@ -33,9 +33,9 @@ html_code = f"""
 """
 
 def main():
-    st.title("Netflix Movie Recommendation Engine")
-    user_id_input = st.number_input("Enter User ID:", value=2378011)
-    user_id = int(user_id_input)
+    # st.title("Netflix Movie Recommendation Engine")
+    # user_id_input = st.number_input("Enter User ID:", value=2378011)
+    # user_id = int(user_id_input)
 
     # Dropdown menu with the list of items
     usr_id = [1488844,
@@ -141,7 +141,7 @@ def main():
     selected_item = st.selectbox("Select an item:", [""] + usr_id)
 
     if st.button("Recommend Movies"):
-        Recommend(user_id, Movies)
+        Recommend(selected_item, Movies)
 
 
 def Recommend(User_ID, Movies):
