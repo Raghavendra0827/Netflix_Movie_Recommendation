@@ -138,7 +138,7 @@ def main():
  1011918,
  1665054,
  2630337]
-    selected_item = st.selectbox("Select an item:", [""] + usr_id)
+    selected_item = st.selectbox("Select an item:", usr_id, index=usr_id.index("822109"))
 
     if st.button("Recommend Movies"):
         Recommend(selected_item, Movies)
