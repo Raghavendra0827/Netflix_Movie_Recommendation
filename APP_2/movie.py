@@ -49,7 +49,6 @@ def initial_description():
     st.title("Movie Recommendation App")
     st.write("Welcome to the Movie Recommendation App!")
     st.write("Enter a movie ID below to get recommendations based on its genre.")
-    st.write("Enjoy discovering new movies!")
     #st.write("Imported CSV:")
     st.write(pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
 
@@ -145,8 +144,8 @@ def main():
 # Displaying the image
         image_url = "https://i.pinimg.com/originals/6a/a5/e9/6aa5e969821d426d3d828fd08921c73b.png"
         st.image(image_url, caption=t.title(), use_column_width=True)
-
         st.title("Recommended Movies:")
+        st.write("Enjoy discovering new movies!")
         num_columns = 5  # Number of columns for displaying movies
         
         # Calculate the number of rows needed
