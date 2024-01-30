@@ -134,7 +134,7 @@ def main():
                 if idx < len(movie_titles):
                     try:
                         cols[j].write(movie_titles[idx].title(), unsafe_allow_html=True)
-                        cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Movie Recommendation", use_column_width=True)
+                        cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Recommended Movie", use_column_width=True)
                     except Exception as e:
                         st.error(f"Error displaying movie info: {e}")
 
