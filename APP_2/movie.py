@@ -88,7 +88,7 @@ def extract_genres(lst, ID, till, til):
         for _ in range(0, num):
             Moviee_Title.append(random.choice(lst))
     
-    return Moviee_Title
+    return Moviee_Title,til
 
 # Streamlit app
 def main():
@@ -106,11 +106,18 @@ def main():
     # Call the recommend function with the given ID on submit
     if submitted:
         try:
-            movie_titles = recommend(ID)
+            movie_titles,t = recommend(ID)
         except Exception as e:
             st.error(f"Error getting movie recommendations: {e}")
         
         # Display the recommended movies and image in rows
+        st.header("Currently Watching Movie")
+        st.title("Title of the Image")
+
+# Displaying the image
+#image_url = "https://images.app.goo.gl/AsdCD9hRLFcWsXwS7"
+        st.image(t, caption='Image Caption Here', use_column_width=True)
+
         st.header("Recommended Movies:")
         num_columns = 5  # Number of columns for displaying movies
         
