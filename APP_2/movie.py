@@ -128,5 +128,4 @@ def main():
 
 if __name__ == "__main__":
     initial_description()
-    if st.button("Ok"):
-        main()
+    main()
