@@ -111,14 +111,14 @@ def main():
             st.error(f"Error getting movie recommendations: {e}")
         
         # Display the recommended movies and image in rows
-        st.header("Currently Watching Movie")
+        st.title("Currently Watching Movie")
         st.title(t)
 
 # Displaying the image
         image_url = "APP_2/360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.webp"
-        st.image(image_url, caption='Image Caption Here', use_column_width=True)
+        st.image(image_url, caption=t, use_column_width=True)
 
-        st.header("Recommended Movies:")
+        #st.header("Recommended Movies:")
         num_columns = 5  # Number of columns for displaying movies
         
         # Calculate the number of rows needed
