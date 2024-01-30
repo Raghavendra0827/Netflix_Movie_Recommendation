@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore")
 # Read the data
 try:
     columns = ["ID", "Title", "Genre", "Description"]
-    data = pd.read_csv(r"C:\Users\ragha\Downloads\train_data.txt", sep=":::", header=None, names=columns)
+    data = pd.read_csv(r"train_data.txt", sep=":::", header=None, names=columns)
 except Exception as e:
     st.error(f"Error reading the data: {e}")
 
