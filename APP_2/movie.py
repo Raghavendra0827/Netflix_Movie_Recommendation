@@ -87,7 +87,6 @@ def extract_genres(lst, ID, till, til):
 
 # Streamlit app
 def main():
-    st.empty()
     st.title("Enjoy discovering new movies!")
     # Take input ID from the user
     try:
@@ -128,4 +127,6 @@ def main():
 
 if __name__ == "__main__":
     initial_description()
-    main()
+    if st.button("Ok"):
+        st.empty()
+        main()
