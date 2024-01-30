@@ -153,4 +153,8 @@ def main():
                         st.error(f"Error displaying movie info: {e}")
 
 if __name__ == "__main__":
-    main()
+    st.header("Input: Enter a movie ID.")
+    st.header("Output: Get recommendations of similar movies based on the selected movie's genre, displayed in a grid layout.")
+    st.title("Note : This recommendation based on genre")
+    if st.button("Submit"):
+        main()
