@@ -20,6 +20,8 @@ def initial_description():
     st.write("Welcome to the Movie Recommendation App!")
     st.write("Enter a movie ID below to get recommendations based on its genre.")
     st.write(pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
+    if st.button("Ok"):
+        st.empty()
 
 # Read the data
 try:
@@ -125,10 +127,7 @@ def main():
                         cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Movie Recommendation", use_column_width=True)
                     except Exception as e:
                         st.error(f"Error displaying movie info: {e}")
-        st.empty()  # Clear the page
 
 if __name__ == "__main__":
     initial_description()
-    if st.button("Ok"):
-        st.empty()
-        main()
+    main()
