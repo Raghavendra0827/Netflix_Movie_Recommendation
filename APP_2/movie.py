@@ -16,6 +16,13 @@ import streamlit as st
 
 warnings.filterwarnings("ignore")
 
+def initial_description():
+    st.title("Movie Recommendation App")
+    st.write("Welcome to the Movie Recommendation App!")
+    st.write("Enter a movie ID below to get recommendations based on its genre.")
+    st.write("After entering the ID, click the 'Submit' button to see the recommendations.")
+    st.write("Enjoy discovering new movies!")
+
 # Read the data
 try:
     columns = ["ID", "Title", "Genre", "Description"]
@@ -83,36 +90,6 @@ def extract_genres(lst, ID, till, til):
 
 # Streamlit app
 def main():
-    # Set background image using container
-    background_image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOku1la2asHxadGeG8mnFJ-7WUnc-T4YlW_A&usqp=CAU'
-    html_code = f"""
-        <style>
-            body {{
-                background-image: url('{background_image}');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                height: 100vh;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }}
-            .stApp {{
-                background: none;
-            }}
-            .title {{
-                color: white;
-            }}
-            .movie-title {{
-                color: orange;
-            }}
-        </style>
-    """
-    
-    st.markdown(html_code, unsafe_allow_html=True)
-    
     st.title("Movie Recommendation App")
     
     # Take input ID from the user
@@ -147,14 +124,12 @@ def main():
                 idx = i * num_columns + j
                 if idx < len(movie_titles):
                     try:
-                        cols[j].write(movie_titles[idx], unsafe_allow_html=True, style="color: orange;")
+                        cols[j].write(movie_titles[idx], unsafe_allow_html=True, class="movie-title")
                         cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Movie Recommendation", use_column_width=True)
                     except Exception as e:
                         st.error(f"Error displaying movie info: {e}")
 
 if __name__ == "__main__":
-    st.header("Input: Enter a movie ID.")
-    st.header("Output: Get recommendations of similar movies based on the selected movie's genre, displayed in a grid layout.")
-    st.title("Note : This recommendation based on genre")
-    if st.button("Submit"):
-        main()
+    initial_description()
+    main()
+        
