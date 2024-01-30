@@ -112,13 +112,13 @@ def main():
         
         # Display the recommended movies and image in rows
         st.title("Currently Watching Movie")
-        st.title(t.title())
+        st.header(t.title())
 
 # Displaying the image
         image_url = "APP_2/360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.webp"
         st.image(image_url, caption=t.title(), use_column_width=True)
 
-        #st.header("Recommended Movies:")
+        st.title("Recommended Movies:")
         num_columns = 5  # Number of columns for displaying movies
         
         # Calculate the number of rows needed
