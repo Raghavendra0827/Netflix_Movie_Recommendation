@@ -19,10 +19,7 @@ def initial_description():
     st.title("Movie Recommendation App")
     st.write("Welcome to the Movie Recommendation App!")
     st.write("Enter a movie ID below to get recommendations based on its genre.")
-    st.write("Enjoy discovering new movies!")
-    st.write("Imported CSV:")
     st.write(pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
-
 # Read the data
 try:
     columns = ["ID", "Title", "Genre", "Description"]
@@ -90,6 +87,8 @@ def extract_genres(lst, ID, till, til):
 
 # Streamlit app
 def main():
+    st.empty()
+    st.title("Enjoy discovering new movies!")
     # Take input ID from the user
     try:
         ID = st.number_input("Enter Movie ID:", value=1)
