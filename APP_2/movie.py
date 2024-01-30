@@ -13,7 +13,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 import streamlit as st
 # Set the background color
-st.set_page_config(layout="wide", page_title="Movie Recommendation App", page_icon=":clapper:", theme="light", background_color="#e6f1f7")
+#st.set_page_config(layout="wide", page_title="Movie Recommendation App", page_icon=":clapper:", theme="light", background_color="#e6f1f7")
 
 warnings.filterwarnings("ignore")
 
