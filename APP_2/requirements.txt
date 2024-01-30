@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a83e7b90c461e792014575ebba50361807481ab96b643fa18050680a48a3c942
-size 96
+matplotlib==3.6.0
+nltk==3.8.1
+numpy==1.24.3
+pandas==2.0.3
+streamlit==1.29.0
