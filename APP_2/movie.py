@@ -102,6 +102,12 @@ def main():
             .stApp {{
                 background: none;
             }}
+            .title {{
+                color: white;
+            }}
+            .movie-title {{
+                color: orange;
+            }}
         </style>
     """
     
@@ -141,7 +147,7 @@ def main():
                 idx = i * num_columns + j
                 if idx < len(movie_titles):
                     try:
-                        cols[j].write(movie_titles[idx])
+                        cols[j].write(movie_titles[idx], unsafe_allow_html=True, class="movie-title")
                         cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Movie Recommendation", use_column_width=True)
                     except Exception as e:
                         st.error(f"Error displaying movie info: {e}")
