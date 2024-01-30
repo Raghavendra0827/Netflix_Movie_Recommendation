@@ -7,22 +7,11 @@ import matplotlib.pyplot as plt
 import warnings
 import random
 import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 import streamlit as st
-
-# Download NLTK resources
-nltk.download('punkt')
-nltk.download('wordnet')
-
-# Set Streamlit page config
-st.set_page_config(
-    layout="wide",
-    page_title="Movie Recommendation App",
-    page_icon=":clapper:",
-    theme="light",
-    background_color="#e6f1f7"
-)
 
 warnings.filterwarnings("ignore")
 
@@ -31,12 +20,13 @@ def initial_description():
     st.write("Welcome to the Movie Recommendation App!")
     st.write("Enter a movie ID below to get recommendations based on its genre.")
     st.write("Enjoy discovering new movies!")
-    st.write(pd.read_csv("APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
+    st.write("Imported CSV:")
+    st.write(pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
 
 # Read the data
 try:
     columns = ["ID", "Title", "Genre", "Description"]
-    data = pd.read_csv("APP_2/train_data.txt", sep=":::", header=None, names=columns)
+    data = pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=columns)
 except Exception as e:
     st.error(f"Error reading the data: {e}")
 
@@ -100,7 +90,6 @@ def extract_genres(lst, ID, till, til):
 
 # Streamlit app
 def main():
-    st.title("Movie Recommendation App")
     # Take input ID from the user
     try:
         ID = st.number_input("Enter Movie ID:", value=1)
@@ -140,6 +129,4 @@ def main():
 
 if __name__ == "__main__":
     initial_description()
-    if st.button("Ok"):
-        st.empty()  # Clear the page
-        main()
+    main()
