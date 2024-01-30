@@ -116,7 +116,7 @@ def main():
 
 # Displaying the image
         image_url = "https://images.app.goo.gl/AsdCD9hRLFcWsXwS7"
-        st.image(t, caption='Image Caption Here', use_column_width=True)
+        st.image(image_url, caption='Image Caption Here', use_column_width=True)
 
         st.header("Recommended Movies:")
         num_columns = 5  # Number of columns for displaying movies
