@@ -112,7 +112,7 @@ def main():
         
         # Display the recommended movies and image in rows
         st.title("Currently Watching Movie")
-        st.title(t)
+      #  st.title(t)
 
 # Displaying the image
         image_url = "APP_2/360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.webp"
