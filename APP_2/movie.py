@@ -12,6 +12,8 @@ nltk.download('wordnet')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 import streamlit as st
+# Set the background color
+st.set_page_config(layout="wide", page_title="Movie Recommendation App", page_icon=":clapper:", theme="light", background_color="#e6f1f7")
 
 warnings.filterwarnings("ignore")
 
@@ -20,7 +22,7 @@ def initial_description():
     st.write("Welcome to the Movie Recommendation App!")
     st.write("Enter a movie ID below to get recommendations based on its genre.")
     st.write("Enjoy discovering new movies!")
-    st.write("Imported CSV:")
+    #st.write("Imported CSV:")
     st.write(pd.read_csv(r"APP_2/train_data.txt", sep=":::", header=None, names=["ID", "Title", "Genre", "Description"]))
 
 # Read the data
