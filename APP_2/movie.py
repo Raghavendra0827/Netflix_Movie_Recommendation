@@ -143,7 +143,7 @@ def main():
         st.header(t.title())
 
 # Displaying the image
-        image_url = "APP_2/360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.webp"
+        image_url = "https://i.pinimg.com/originals/6a/a5/e9/6aa5e969821d426d3d828fd08921c73b.png"
         st.image(image_url, caption=t.title(), use_column_width=True)
 
         st.title("Recommended Movies:")
@@ -162,7 +162,7 @@ def main():
                 if idx < len(movie_titles):
                     try:
                         cols[j].write(movie_titles[idx].title(), unsafe_allow_html=True)
-                        cols[j].image("https://th.bing.com/th/id/OIP.hfwq9oE3D1OB7gZnL7DowAAAAA?rs=1&pid=ImgDetMain", caption="Recommended Movie", use_column_width=True)
+                        cols[j].image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSePkMigckVrgjrtsMpymhsmB0oc_i408ge-A&usqp=CAU", caption="Recommended Movie", use_column_width=True)
                     except Exception as e:
                         st.error(f"Error displaying movie info: {e}")
 
