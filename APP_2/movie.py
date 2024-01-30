@@ -112,10 +112,10 @@ def main():
         
         # Display the recommended movies and image in rows
         st.header("Currently Watching Movie")
-        st.title("Title of the Image")
+        st.title(t)
 
 # Displaying the image
-#image_url = "https://images.app.goo.gl/AsdCD9hRLFcWsXwS7"
+        image_url = "https://images.app.goo.gl/AsdCD9hRLFcWsXwS7"
         st.image(t, caption='Image Caption Here', use_column_width=True)
 
         st.header("Recommended Movies:")
