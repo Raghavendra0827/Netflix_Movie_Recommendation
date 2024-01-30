@@ -16,6 +16,34 @@ import streamlit as st
 #st.set_page_config(layout="wide", page_title="Movie Recommendation App", page_icon=":clapper:", theme="light", background_color="#e6f1f7")
 
 warnings.filterwarnings("ignore")
+background_image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOku1la2asHxadGeG8mnFJ-7WUnc-T4YlW_A&usqp=CAU'
+html_code = f"""
+    <style>
+        body {{
+            background-image: url('{background_image}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }}
+        .stApp {{
+            background: none;
+        }}
+        .title {{
+            color: white;
+        }}
+        .movie-title {{
+            color: orange;
+        }}
+    </style>
+"""
+
+st.markdown(html_code, unsafe_allow_html=True)
 
 def initial_description():
     st.title("Movie Recommendation App")
