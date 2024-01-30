@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import warnings
 import random
 import nltk
+import nltk
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk.corpus import wordnet
 import streamlit as st
