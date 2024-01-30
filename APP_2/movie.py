@@ -93,6 +93,27 @@ def extract_genres(lst, ID, till, til):
 # Streamlit app
 def main():
     # Take input ID from the user
+        # Set background image using container
+    background_image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOku1la2asHxadGeG8mnFJ-7WUnc-T4YlW_A&usqp=CAU'
+    html_code = f"""
+        <style>
+            body {{
+                background-image: url('{background_image}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100vh;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }}
+            .stApp {{
+                background: none;
+            }}
+        </style>
+    """
     try:
         ID = st.number_input("Enter Movie ID:", value=1)
     except Exception as e:
