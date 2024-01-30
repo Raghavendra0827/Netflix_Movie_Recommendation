@@ -115,7 +115,7 @@ def main():
         st.title(t)
 
 # Displaying the image
-        image_url = "https://images.app.goo.gl/AsdCD9hRLFcWsXwS7"
+        image_url = "APP_2/360_F_464787423_mFNIhM8f00HagGgI2eGzsf3wevZhPHCC.webp"
         st.image(image_url, caption='Image Caption Here', use_column_width=True)
 
         st.header("Recommended Movies:")
