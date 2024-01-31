@@ -139,8 +139,8 @@ def main():
  1665054,
  2630337]
     selected_item = st.selectbox("Select an item:", usr_id, index=1)
-    if selected_item in usr_id:
-        if st.button("Recommend Movies"):
+    if st.button("Recommend Movies"):
+        if selected_item in usr_id:
             Recommend(selected_item, Movies)
         else:
             st.warning("Invalid ID")
